@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.grenzfrequence.showmycar"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libraries.kotlin
+    implementation libraries.appCompat
+    implementation libraries.contraintLayout
+
+    implementation libraries.design
+    implementation libraries.cardView
+
+    // Dagger
+    implementation libraries.dagger
+    kapt libraries.daggerCompiler
+
+    // Retrofit
+    implementation libraries.okHttp
+    implementation libraries.retrofit
+    implementation libraries.retrofitRxAdapter
+    implementation libraries.moshiConverter
+    implementation libraries.moshi
+    implementation libraries.moshiKotlin
+    implementation libraries.LoggingInterceptor
+
+    // Rx
+    implementation libraries.RxJavaAndroid
+    testImplementation libraries.RxJavaAndroid
+
+    testImplementation libraries.junit
+    testImplementation libraries.assertj
+    testImplementation libraries.mockitoKotlin
+//    testImplementation libraries.mockito
+    testImplementation libraries.robolectric
+    testImplementation libraries.mockWebServer
+
+    androidTestImplementation libraries.mockitoKotlin
+    androidTestImplementation libraries.dexmaker
+    androidTestImplementation libraries.dexmakerMockito
+    androidTestImplementation libraries.mockWebServer
+    androidTestImplementation libraries.testRunner
+    androidTestImplementation libraries.espresso
+}
