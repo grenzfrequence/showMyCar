@@ -1,15 +1,18 @@
 ext.versions = [
-        kotlin             : '1.1.2-4',
+        kotlin             : '1.1.3',
         gradle             : '3.0.0-alpha8',
         libVersionChecker  : '0.15.0',
 
         contraintLayout    : '1.0.2',
 
-        support            : '26.0.0',
+        support            : '25.4.0',
 
         retrofit           : '2.2.0',
-        moshi              : '1.5.0',
+        moshi              : '1.4.0',
         okHttp             : '3.6.0',
+        okio               : '1.13.0',
+
+        paperParcel        : '2.0.2',
 
         RxJavaAndroid      : '2.0.1',
         RxJava             : '2.0.1',
@@ -23,6 +26,7 @@ ext.versions = [
         robolectric        : '3.4.2',
         espresso           : '3.0.0',
         mockitoKotlin      : "1.5.0",
+        mockitoInline      : "2.8.47",
 
         dexmaker           : '1.2',
         dexmakerMockito    : '1.2',
@@ -35,42 +39,44 @@ ext.gradlePlugins = [
 ]
 
 ext.libraries = [
-        kotlin            : "org.jetbrains.kotlin:kotlin-stdlib:1.1.2",
+        kotlin             : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
 
-        contraintLayout   : "com.android.support.constraint:constraint-layout:$versions.contraintLayout",
+        contraintLayout    : "com.android.support.constraint:constraint-layout:$versions.contraintLayout",
 
-        appCompat         : "com.android.support:appcompat-v7:$versions.support",
-        design            : "com.android.support:design:$versions.support",
-        recyclerView      : "com.android.support:recyclerview-v7:$versions.support",
-        cardView          : "com.android.support:cardview-v7:$versions.support",
+        appCompat          : "com.android.support:appcompat-v7:$versions.support",
+        design             : "com.android.support:design:$versions.support",
+        recyclerView       : "com.android.support:recyclerview-v7:$versions.support",
+        cardView           : "com.android.support:cardview-v7:$versions.support",
 
-        dagger            : "com.google.dagger:dagger:$versions.dagger",
-        daggerCompiler    : "com.google.dagger:dagger-compiler:$versions.dagger",
+        dagger             : "com.google.dagger:dagger:$versions.dagger",
+        daggerCompiler     : "com.google.dagger:dagger-compiler:$versions.dagger",
 
-        okHttp            : "com.squareup.okhttp3:okhttp:$versions.okHttp",
-        LoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
-        retrofit          : "com.squareup.retrofit2:retrofit:$versions.retrofit",
-        moshiConverter    : "com.squareup.retrofit2:converter-moshi:$versions.retrofit",
-        moshi             : "com.squareup.moshi:moshi:$versions.moshi",
-        moshiKotlin       : "com.squareup.moshi:moshi-kotlin:$versions.moshi",
+        okHttp             : "com.squareup.okhttp3:okhttp:$versions.okHttp",
+        LoggingInterceptor : "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
+        retrofit           : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        moshiConverter     : "com.squareup.retrofit2:converter-moshi:$versions.retrofit",
+        moshi              : "com.squareup.moshi:moshi:$versions.moshi",
+        okio               : "com.squareup.okio:okio:$versions.okio",
 
+        paperParcel        : "nz.bradcampbell:paperparcel:$versions.paperParcel",
+        paperParcelKotlin  : "nz.bradcampbell:paperparcel-kotlin:$versions.paperParcel",
+        paperParcelCompiler: "nz.bradcampbell:paperparcel-compiler:$versions.paperParcel",
 
-        RxJavaAndroid     : "io.reactivex.rxjava2:rxandroid:$versions.RxJavaAndroid",
-        RxJava            : "io.reactivex.rxjava2:rxjava:$versions.RxJava",
-        retrofitRxAdapter : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+        RxJavaAndroid      : "io.reactivex.rxjava2:rxandroid:$versions.RxJavaAndroid",
+        RxJava             : "io.reactivex.rxjava2:rxjava:$versions.RxJava",
+        retrofitRxAdapter  : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
 
-        junit             : "junit:junit:$versions.junit",
-        testRunner        : "com.android.support.test:runner:$versions.testRunner",
-        assertj           : "org.assertj:assertj-core:$versions.assertJ",
-//        mockitoKotlin      : "com.nhaarman:mockito-kotlin-kt1.1:$versions.mockitoKotlin",
-        mockitoKotlin     : "org.mockito:mockito-inline:+",
-        mockWebServer     : "com.squareup.okhttp3:mockwebserver:$versions.okHttp",
+        junit              : "junit:junit:$versions.junit",
+        testRunner         : "com.android.support.test:runner:$versions.testRunner",
+        assertj            : "org.assertj:assertj-core:$versions.assertJ",
+        mockitoKotlin      : "org.mockito:mockito-inline:$versions.mockitoInline",
+        mockWebServer      : "com.squareup.okhttp3:mockwebserver:$versions.okHttp",
 
-        robolectric       : "org.robolectric:robolectric:$versions.robolectric",
-        espresso          : "com.android.support.test.espresso:espresso-core:$versions.espresso",
-        junitrunner       : "android.support.test.runner.AndroidJUnitRunner",
-        dexmaker          : "com.google.dexmaker:dexmaker:$versions.dexmaker",
-        dexmakerMockito   : "com.google.dexmaker:dexmaker-mockito:$versions.dexmakerMockito",
+        robolectric        : "org.robolectric:robolectric:$versions.robolectric",
+        espresso           : "com.android.support.test.espresso:espresso-core:$versions.espresso",
+        junitrunner        : "android.support.test.runner.AndroidJUnitRunner",
+        dexmaker           : "com.google.dexmaker:dexmaker:$versions.dexmaker",
+        dexmakerMockito    : "com.google.dexmaker:dexmaker-mockito:$versions.dexmakerMockito",
 
 ]
 

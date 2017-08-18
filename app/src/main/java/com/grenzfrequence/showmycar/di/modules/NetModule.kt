@@ -4,8 +4,12 @@ import android.app.Application
 import android.support.compat.BuildConfig
 import com.grenzfrequence.githubviewerkotlin.di.scopes.AppScope
 import com.grenzfrequence.githubviewerkotlin.utils.UrlReference
+import com.grenzfrequence.showmycar.R
+import com.grenzfrequence.showmycar.common.ErrMessages
+import com.grenzfrequence.showmycar.common.ErrMsg
+import com.grenzfrequence.showmycar.common.values.HttpResponses
+import com.grenzfrequence.showmycar.di.qualifiers.ErrorMessages
 import com.grenzfrequence.showmycar.webservice.ParamInterceptor
-import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -17,6 +21,7 @@ import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
+
 
 /**
  * Created by grenzfrequence on 21/01/17.
@@ -53,8 +58,6 @@ class NetModule(baseUrl: String, private val maxCacheSize: Int, private val logg
     @AppScope
     fun provideMoshi(): Moshi {
         return Moshi.Builder()
-                .add(KotlinJsonAdapterFactory())
-//                .add(CarTypesAdapter())
                 .build()
     }
 
@@ -71,7 +74,6 @@ class NetModule(baseUrl: String, private val maxCacheSize: Int, private val logg
         }
 
         return httpBuilder
-                .cache(cache)
                 .build()
     }
 
@@ -89,4 +91,25 @@ class NetModule(baseUrl: String, private val maxCacheSize: Int, private val logg
         return Cache(application.cacheDir, maxCacheSize.toLong())
     }
 
+
+    @Provides
+    @ErrorMessages
+    fun provideRemoteErrMsg(): ErrMessages {
+        val errorMsgs = HashMap<Int, ErrMsg>()
+
+        // default
+        errorMsgs.put(
+                HttpResponses.HTTP_CUSTOM_DEFAULT,
+                ErrMsg(R.string.error_no_connection, R.drawable.ic_block_black))
+
+        // business case error messages
+        errorMsgs.put(
+                HttpResponses.HTTP_FORBIDDEN,
+                ErrMsg(R.string.error_forbidden, R.drawable.ic_error_outline_black))
+        errorMsgs.put(
+                HttpResponses.HTTP_NOT_FOUND,
+                ErrMsg(R.string.error_not_found, R.drawable.ic_info_outline_black))
+
+        return errorMsgs
+    }
 }

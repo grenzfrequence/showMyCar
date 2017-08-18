@@ -1,8 +1,8 @@
 package com.grenzfrequence.showmycar.webservice
 
-import com.grenzfrequence.showmycar.car_types.data.models.BuiltDates
-import com.grenzfrequence.showmycar.car_types.data.models.MainTypes
-import com.grenzfrequence.showmycar.car_types.data.models.Manufacturers
+import com.grenzfrequence.showmycar.car_types.data.model.BuiltDates
+import com.grenzfrequence.showmycar.car_types.data.model.MainTypes
+import com.grenzfrequence.showmycar.car_types.data.model.ManufacturersModel
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET
@@ -19,7 +19,7 @@ interface ShowMyCarApi {
     @GET("v1/car-types/manufacturer")
     fun getManufacturer(
             @Query("page") pageNr: Int,
-            @Query("pageSize") itemsPerPage: Int): Observable<Response<Manufacturers>>
+            @Query("pageSize") itemsPerPage: Int): Observable<Response<ManufacturersModel>>
 
     // http://api-aws-eu-qa-1.auto1-test.com/v1/car-types/main-types?manufacturer=107&page=0&pageSize=10&wa_key=coding-puzzle-client-449cc9d
     @GET("v1/car-types/main-types")

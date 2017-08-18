@@ -1,10 +1,10 @@
-package com.grenzfrequence.showmycar
+package com.grenzfrequence.showmycar.webserviceTests.offline
 
+import com.grenzfrequence.showmycar.BuildConfig
 import com.grenzfrequence.showmycar.base.BaseUnitTest
-import com.grenzfrequence.showmycar.car_types.data.models.BuiltDates
-import com.grenzfrequence.showmycar.car_types.data.models.MainTypes
-import com.grenzfrequence.showmycar.car_types.data.models.Manufacturers
-import com.grenzfrequence.showmycar.car_types.data.models.base.CarTypes
+import com.grenzfrequence.showmycar.car_types.data.model.BuiltDates
+import com.grenzfrequence.showmycar.car_types.data.model.MainTypes
+import com.grenzfrequence.showmycar.car_types.data.model.ManufacturersModel
 import com.grenzfrequence.showmycar.lib_extensions.isEqual
 import com.squareup.moshi.Moshi
 import org.assertj.core.api.Assertions.assertThat
@@ -44,10 +44,15 @@ class ModelTests : BaseUnitTest() {
                 "    \"141\" : \"Buick\"\n" +
                 "  }\n" +
                 "}")
-        val adapter = moshi.adapter<Manufacturers>(Manufacturers::class.java)
-        val manufacturers: Manufacturers? = adapter.fromJson(testData.toString())
+        val adapter = moshi.adapter<ManufacturersModel>(ManufacturersModel::class.java)
+        val manufacturersModel: ManufacturersModel? = adapter.fromJson(testData.toString())
 
-        manufacturers?.let { compare(manufacturers, testData) }
+        manufacturersModel?.let {
+            assertThat(manufacturersModel.page).isEqualTo(testData.get("page"))
+            assertThat(manufacturersModel.pageSize).isEqualTo(testData.get("pageSize"))
+            assertThat(manufacturersModel.totalPageCount).isEqualTo(testData.get("totalPageCount"))
+            assertThat(manufacturersModel.wkda.isEqual(testData.get("wkda") as JSONObject)).isTrue()
+        }
     }
 
     @Test
@@ -68,7 +73,12 @@ class ModelTests : BaseUnitTest() {
         val adapter = moshi.adapter<MainTypes>(MainTypes::class.java)
         val mainTypes: MainTypes? = adapter.fromJson(testData.toString())
 
-        mainTypes?.let { compare(mainTypes, testData) }
+        mainTypes?.let {
+            assertThat(mainTypes.page).isEqualTo(testData.get("page"))
+            assertThat(mainTypes.pageSize).isEqualTo(testData.get("pageSize"))
+            assertThat(mainTypes.totalPageCount).isEqualTo(testData.get("totalPageCount"))
+            assertThat(mainTypes.wkda.isEqual(testData.get("wkda") as JSONObject)).isTrue()
+        }
     }
 
     @Test
@@ -91,13 +101,6 @@ class ModelTests : BaseUnitTest() {
         val builtdates: BuiltDates? = adapter.fromJson(testData.toString())
 
         assertThat(builtdates?.wkda?.isEqual(testData.get("wkda") as JSONObject)).isTrue()
-    }
-
-    private fun compare(carTypes: CarTypes, jsonObject: JSONObject) {
-        assertThat(carTypes.page).isEqualTo(jsonObject.get("page"))
-        assertThat(carTypes.pageSize).isEqualTo(jsonObject.get("pageSize"))
-        assertThat(carTypes.totalPageCount).isEqualTo(jsonObject.get("totalPageCount"))
-        assertThat(carTypes.wkda.isEqual(jsonObject.get("wkda") as JSONObject)).isTrue()
     }
 
 }

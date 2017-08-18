@@ -4,12 +4,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.grenzfrequence.showmycar"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -20,51 +20,67 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
+    dataBinding {
+        enabled = true
+    }
+//    testOptions {
+//        unitTests {
+//            includeAndroidResources true
+//        }
+//    }
+    lintOptions {
+        disable 'ContentDescription'
     }
 }
 
 dependencies {
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation libraries.kotlin
-    implementation libraries.appCompat
-    implementation libraries.contraintLayout
+    kapt 'com.android.databinding:compiler:3.0.0-alpha8'
 
-    implementation libraries.design
-    implementation libraries.cardView
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile libraries.kotlin
+    compile libraries.appCompat
+
+    compile libraries.design
+    compile libraries.cardView
 
     // Dagger
-    implementation libraries.dagger
+    compile libraries.dagger
     kapt libraries.daggerCompiler
+    annotationProcessor libraries.daggerCompiler
 
     // Retrofit
-    implementation libraries.okHttp
-    implementation libraries.retrofit
-    implementation libraries.retrofitRxAdapter
-    implementation libraries.moshiConverter
-    implementation libraries.moshi
-    implementation libraries.moshiKotlin
-    implementation libraries.LoggingInterceptor
+    compile libraries.okHttp
+    compile libraries.retrofit
+    compile libraries.retrofitRxAdapter
+    compile libraries.moshiConverter
+    compile libraries.moshi
+//    compile libraries.moshiKotlin
+    compile libraries.LoggingInterceptor
+
+    // Paperparcel
+    compile libraries.paperParcel
+    compile libraries.paperParcelKotlin
+    kapt libraries.paperParcelCompiler
+    annotationProcessor libraries.paperParcelCompiler
 
     // Rx
-    implementation libraries.RxJavaAndroid
-    testImplementation libraries.RxJavaAndroid
+    compile libraries.RxJavaAndroid
 
-    testImplementation libraries.junit
-    testImplementation libraries.assertj
-    testImplementation libraries.mockitoKotlin
-//    testImplementation libraries.mockito
-    testImplementation libraries.robolectric
-    testImplementation libraries.mockWebServer
+    testCompile libraries.RxJavaAndroid
 
-    androidTestImplementation libraries.mockitoKotlin
-    androidTestImplementation libraries.dexmaker
-    androidTestImplementation libraries.dexmakerMockito
-    androidTestImplementation libraries.mockWebServer
-    androidTestImplementation libraries.testRunner
-    androidTestImplementation libraries.espresso
+//    testCompile libraries.okio
+//    androidTestCompile libraries.okio
+
+    testCompile libraries.junit
+    testCompile libraries.assertj
+    testCompile libraries.mockitoKotlin
+    testCompile libraries.robolectric
+    testCompile libraries.mockWebServer
+
+    androidTestCompile libraries.mockitoKotlin
+    androidTestCompile libraries.dexmaker
+    androidTestCompile libraries.dexmakerMockito
+//    androidTestCompile libraries.mockWebServer
+    androidTestCompile libraries.testRunner
 }

@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">ShowMyCar</string>
-    <string name="action_settings">Settings</string>
+
+    <!--titles-->
+    <string name="select_manufacturers">Select Manufacturer</string>
+    <string name="select_main_type">Select your Car</string>
+    <string name="select_built_dates">Select the built date</string>
+
+    <!--error messages-->
+    <string name="error_not_found">Try other entry to find your car</string>
+    <string name="error_forbidden">Try later until the server is ready for you</string>
+    <string name="error_no_connection">Try again after connection to server is established</string>
+
 </resources>
