@@ -6,8 +6,6 @@ import paperparcel.PaperParcelable
 /**
  * Created by grenzfrequence on 13.08.17.
  */
-typealias Wkda = MutableMap<String, String>
-
 @PaperParcel
 data class ManufacturersModel(
         val page: Int,

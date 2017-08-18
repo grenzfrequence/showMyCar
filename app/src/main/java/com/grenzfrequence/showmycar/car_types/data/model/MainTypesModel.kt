@@ -8,13 +8,15 @@ import paperparcel.PaperParcelable
  */
 
 @PaperParcel
-data class MainTypes(
+data class MainTypesModel(
         val page: Int,
         val pageSize: Int,
         val totalPageCount: Int,
         val wkda: Wkda) : PaperParcelable {
 
     companion object {
-        @JvmField val CREATOR = PaperParcelMainTypes.CREATOR
+        @JvmField val CREATOR = PaperParcelMainTypesModel.CREATOR
     }
+
+    fun isLastPage() : Boolean = page >= totalPageCount - 1
 }

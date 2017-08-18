@@ -2,8 +2,8 @@ package com.grenzfrequence.showmycar.webserviceTests.online
 
 import com.grenzfrequence.showmycar.BuildConfig
 import com.grenzfrequence.showmycar.base.BaseUnitTest
-import com.grenzfrequence.showmycar.car_types.data.model.BuiltDates
-import com.grenzfrequence.showmycar.car_types.data.model.MainTypes
+import com.grenzfrequence.showmycar.car_types.data.model.BuiltDatesModel
+import com.grenzfrequence.showmycar.car_types.data.model.MainTypesModel
 import com.grenzfrequence.showmycar.car_types.data.model.ManufacturersModel
 import com.grenzfrequence.showmycar.webservice.ShowMyCarApi
 import org.assertj.core.api.Assertions.assertThat
@@ -42,7 +42,7 @@ class ApiTests : BaseUnitTest() {
     fun getBuiltDatesTest() {
         val manufacturer = apiGetManufacturers().body().wkda.keys.first()
         val mainType = apiGetMainTypes(manufacturer).body().wkda.keys.first()
-        val response: Response<BuiltDates> = apiGetBuiltDates(manufacturer, mainType)
+        val response: Response<BuiltDatesModel> = apiGetBuiltDates(manufacturer, mainType)
         assertThat(response.raw().code()).describedAs("%s", response.errorBody()).isEqualTo(200)
         assertThat(response.body().wkda.isEmpty()).isFalse()
     }
@@ -53,14 +53,14 @@ class ApiTests : BaseUnitTest() {
         return response
     }
 
-    private fun apiGetMainTypes(manufacturer: String): Response<MainTypes> {
-        val response: Response<MainTypes> = showMyCarApi.getMainTypes(manufacturer, 0, 10)
+    private fun apiGetMainTypes(manufacturer: String): Response<MainTypesModel> {
+        val response: Response<MainTypesModel> = showMyCarApi.getMainTypes(manufacturer, 0, 10)
                 .blockingSingle()
         return response
     }
 
-    private fun apiGetBuiltDates(manufacturer: String, mainType: String): Response<BuiltDates> {
-        val response: Response<BuiltDates> = showMyCarApi.getBuiltDates(manufacturer, mainType, 0, 10)
+    private fun apiGetBuiltDates(manufacturer: String, mainType: String): Response<BuiltDatesModel> {
+        val response: Response<BuiltDatesModel> = showMyCarApi.getBuiltDates(manufacturer, mainType, 0, 10)
                 .blockingSingle()
         return response
     }

@@ -8,8 +8,8 @@ import paperparcel.PaperParcelable
  */
 
 @PaperParcel
-data class BuiltDates(val wkda: Wkda) : PaperParcelable {
+data class BuiltDatesModel(val wkda: Wkda) : PaperParcelable {
     companion object {
-        @JvmField val CREATOR = PaperParcelBuiltDates.CREATOR
+        @JvmField val CREATOR = PaperParcelBuiltDatesModel.CREATOR
     }
 }

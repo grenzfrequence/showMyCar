@@ -12,4 +12,6 @@ object WebServiceConfig {
     val KEY = Pair("wa_key", "coding-puzzle-client-449cc9d")
     val MAX_CACHE_SIZE = 10 * 1024 * 1024
     val LOGGING_LEVEL = BODY
+
+    val CARTYPES_PAGE_SIZE = 15
 }

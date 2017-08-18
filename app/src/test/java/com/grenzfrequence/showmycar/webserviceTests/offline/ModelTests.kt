@@ -2,8 +2,8 @@ package com.grenzfrequence.showmycar.webserviceTests.offline
 
 import com.grenzfrequence.showmycar.BuildConfig
 import com.grenzfrequence.showmycar.base.BaseUnitTest
-import com.grenzfrequence.showmycar.car_types.data.model.BuiltDates
-import com.grenzfrequence.showmycar.car_types.data.model.MainTypes
+import com.grenzfrequence.showmycar.car_types.data.model.BuiltDatesModel
+import com.grenzfrequence.showmycar.car_types.data.model.MainTypesModel
 import com.grenzfrequence.showmycar.car_types.data.model.ManufacturersModel
 import com.grenzfrequence.showmycar.lib_extensions.isEqual
 import com.squareup.moshi.Moshi
@@ -70,14 +70,14 @@ class ModelTests : BaseUnitTest() {
                 "        \"Continental SC\": \"Continental SC\"\n" +
                 "    }\n" +
                 "}")
-        val adapter = moshi.adapter<MainTypes>(MainTypes::class.java)
-        val mainTypes: MainTypes? = adapter.fromJson(testData.toString())
+        val adapter = moshi.adapter<MainTypesModel>(MainTypesModel::class.java)
+        val mainTypesModel: MainTypesModel? = adapter.fromJson(testData.toString())
 
-        mainTypes?.let {
-            assertThat(mainTypes.page).isEqualTo(testData.get("page"))
-            assertThat(mainTypes.pageSize).isEqualTo(testData.get("pageSize"))
-            assertThat(mainTypes.totalPageCount).isEqualTo(testData.get("totalPageCount"))
-            assertThat(mainTypes.wkda.isEqual(testData.get("wkda") as JSONObject)).isTrue()
+        mainTypesModel?.let {
+            assertThat(mainTypesModel.page).isEqualTo(testData.get("page"))
+            assertThat(mainTypesModel.pageSize).isEqualTo(testData.get("pageSize"))
+            assertThat(mainTypesModel.totalPageCount).isEqualTo(testData.get("totalPageCount"))
+            assertThat(mainTypesModel.wkda.isEqual(testData.get("wkda") as JSONObject)).isTrue()
         }
     }
 
@@ -97,8 +97,8 @@ class ModelTests : BaseUnitTest() {
                 "        \"2010\": \"2010\"\n" +
                 "    }\n" +
                 "}")
-        val adapter = moshi.adapter<BuiltDates>(BuiltDates::class.java)
-        val builtdates: BuiltDates? = adapter.fromJson(testData.toString())
+        val adapter = moshi.adapter<BuiltDatesModel>(BuiltDatesModel::class.java)
+        val builtdates: BuiltDatesModel? = adapter.fromJson(testData.toString())
 
         assertThat(builtdates?.wkda?.isEqual(testData.get("wkda") as JSONObject)).isTrue()
     }
