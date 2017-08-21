@@ -98,15 +98,15 @@ class NetModule(baseUrl: String, private val maxCacheSize: Int, private val logg
         // default
         errorMsgs.put(
                 HttpResponses.HTTP_CUSTOM_DEFAULT,
-                ErrMsg(R.string.error_no_connection, R.drawable.ic_block_black))
+                ErrMsg(R.string.error_no_connection, R.drawable.ic_block))
 
         // business case error messages
         errorMsgs.put(
                 HttpResponses.HTTP_FORBIDDEN,
-                ErrMsg(R.string.error_forbidden, R.drawable.ic_error_outline_black))
+                ErrMsg(R.string.error_forbidden, R.drawable.ic_error_outline))
         errorMsgs.put(
                 HttpResponses.HTTP_NOT_FOUND,
-                ErrMsg(R.string.error_not_found, R.drawable.ic_info_outline_black))
+                ErrMsg(R.string.error_not_found, R.drawable.ic_info_outline))
 
         return errorMsgs
     }

@@ -73,9 +73,8 @@
                     android:layout_height="@dimen/xxl"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/medium"
-                    android:tint="@color/colorPrimary"
-                    app:srcCompat="@drawable/ic_sentiment_satisfied_black_24dp"
-                    tools:srcCompat="@drawable/ic_sentiment_satisfied_black_24dp"
+                    android:src="@drawable/ic_sentiment_very_satisfied"
+                    tools:src="@drawable/ic_sentiment_very_satisfied"
                     />
 
                 <TextView

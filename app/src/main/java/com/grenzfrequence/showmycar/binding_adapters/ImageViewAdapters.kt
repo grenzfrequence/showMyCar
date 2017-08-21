@@ -7,7 +7,7 @@ import android.widget.ImageView
  * Created by grenzfrequence on 12/03/17.
  */
 
-@BindingAdapter("srcCompat")
+@BindingAdapter("src")
 fun setImageResource(imageView: ImageView, resourceId: Int) {
     imageView.setImageResource(resourceId)
 }

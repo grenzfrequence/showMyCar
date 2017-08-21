@@ -107,14 +107,14 @@
 
                 <ImageView
                     android:id="@+id/iv_place_holder"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/xxl"
                     android:layout_height="@dimen/xxl"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="@dimen/medium"
                     android:layout_marginTop="@dimen/xxxl"
-                    android:tint="@android:color/tertiary_text_light"
                     android:visibility="@{carTypesViewModel.showPlaceholder}"
-                    app:srcCompat="@{carTypesViewModel.placeHolderIconId}"
-                    tools:srcCompat="@drawable/ic_info_outline_black"
+                    app:src="@{carTypesViewModel.placeHolderIconId}"
+                    tools:src="@drawable/ic_info_outline"
                     tools:visibility="gone"
                     />
 

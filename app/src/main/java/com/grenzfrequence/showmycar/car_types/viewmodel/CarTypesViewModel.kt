@@ -39,7 +39,7 @@ constructor(
 
     val showList = ObservableBoolean(false)
     val showPlaceholder = ObservableBoolean(false)
-    val placeHolderIconId = ObservableInt(R.drawable.ic_info_outline_black)
+    val placeHolderIconId = ObservableInt(R.drawable.ic_info_outline)
     val errorMessageId = ObservableInt()
 
     val manufacturer = ObservableField("")
@@ -152,7 +152,7 @@ constructor(
 
     private fun manageBusinessCaseErrors(response: Response<*>, isModelDataExists: Boolean): Boolean {
         var errMsg: ErrMsg? = null
-        placeHolderIconId.set(R.drawable.ic_info_outline_black)
+        placeHolderIconId.set(R.drawable.ic_info_outline)
         val errorCode = response.code()
         if (errorCode != HttpResponses.HTTP_OK) {
             errMsg = errorMessages.get(errorCode) ?: errorMessages.get(HttpResponses.HTTP_CUSTOM_DEFAULT)
