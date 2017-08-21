@@ -29,13 +29,16 @@
 
         <activity
             android:name=".car_types.ui.MainTypesActivity"
-            android:label="@string/select_main_type"
             android:theme="@style/AppTheme.NoActionBar"
             />
 
         <activity
             android:name=".car_types.ui.BuiltDatesActivity"
-            android:label="@string/select_built_dates"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+
+        <activity
+            android:name=".car_types.ui.SummarizeActivity"
             android:theme="@style/AppTheme.NoActionBar"
             />
 

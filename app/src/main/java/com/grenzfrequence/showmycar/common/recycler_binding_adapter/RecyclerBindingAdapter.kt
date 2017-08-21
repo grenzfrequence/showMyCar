@@ -5,19 +5,19 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View.*
 import android.view.ViewGroup
-import com.grenzfrequence.showmycar.car_types.ui.base.MvvmViewModelData
+import com.grenzfrequence.showmycar.car_types.ui.base.MvvmViewModelItem
 import java.util.*
 
 /**
  * Created by grenzfrequence on 19/03/17.
  */
 
-class RecyclerBindingAdapter<ITEM, VIEWMODELDATA : MvvmViewModelData<ITEM>>(
+class RecyclerBindingAdapter<ITEM, VIEWMODELITEM : MvvmViewModelItem<ITEM>>(
         @param:LayoutRes private val itemLayoutEven: Int,
         @param:LayoutRes private val itemLayoutOdd: Int,
         @param:LayoutRes private val progressBarLayout: Int,
         private val viewModelId: Int,
-        private val createViewModel: () -> VIEWMODELDATA)
+        private val createViewModel: () -> VIEWMODELITEM)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
@@ -27,11 +27,8 @@ class RecyclerBindingAdapter<ITEM, VIEWMODELDATA : MvvmViewModelData<ITEM>>(
         private val TYPE_PROGRESS_BAR_VIEW_HOLDER = 3
     }
 
-
     private var listItems: List<ITEM> = ArrayList()
     private var showProgressBar = false
-
-    var onItemClickListener: OnItemClickListener<ITEM>? = null
 
     init {
         setHasStableIds(true)
@@ -54,10 +51,10 @@ class RecyclerBindingAdapter<ITEM, VIEWMODELDATA : MvvmViewModelData<ITEM>>(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if ((position != 0 && position == itemCount - 1))
+        return if (position != 0 && position == itemCount - 1)
             TYPE_PROGRESS_BAR_VIEW_HOLDER
-        else if (position % 2 == 0) TYPE_BINDING_VIEW_HOLDER_EVEN
-        else TYPE_BINDING_VIEW_HOLDER_ODD
+        else if (position % 2 == 0) TYPE_BINDING_VIEW_HOLDER_ODD
+        else TYPE_BINDING_VIEW_HOLDER_EVEN
     }
 
     override fun getItemId(position: Int): Long {
@@ -89,13 +86,8 @@ class RecyclerBindingAdapter<ITEM, VIEWMODELDATA : MvvmViewModelData<ITEM>>(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is BindingViewHolder<*>) {
 
-            val bindingViewHolder = holder as BindingViewHolder<VIEWMODELDATA>
+            val bindingViewHolder = holder as BindingViewHolder<VIEWMODELITEM>
             val modelData = listItems[position]
-
-            bindingViewHolder.itemBinding.root.setOnClickListener {
-                view ->
-                onItemClickListener?.onItemClicked(modelData, position)
-            }
 
             bindingViewHolder.viewModel.modelData = modelData
             bindingViewHolder.executePendingBindings()

@@ -5,7 +5,6 @@ import android.support.compat.BuildConfig
 import com.grenzfrequence.githubviewerkotlin.di.scopes.AppScope
 import com.grenzfrequence.githubviewerkotlin.utils.UrlReference
 import com.grenzfrequence.showmycar.R
-import com.grenzfrequence.showmycar.common.ErrMessages
 import com.grenzfrequence.showmycar.common.ErrMsg
 import com.grenzfrequence.showmycar.common.values.HttpResponses
 import com.grenzfrequence.showmycar.di.qualifiers.ErrorMessages
@@ -91,10 +90,9 @@ class NetModule(baseUrl: String, private val maxCacheSize: Int, private val logg
         return Cache(application.cacheDir, maxCacheSize.toLong())
     }
 
-
     @Provides
     @ErrorMessages
-    fun provideRemoteErrMsg(): ErrMessages {
+    fun provideRemoteErrMsg(): Map<Int, ErrMsg> {
         val errorMsgs = HashMap<Int, ErrMsg>()
 
         // default

@@ -1,5 +1,6 @@
 package com.grenzfrequence.showmycar.car_types.data.model
 
+import com.grenzfrequence.showmycar.car_types.data.model.base.CarTypesModel
 import paperparcel.PaperParcel
 import paperparcel.PaperParcelable
 
@@ -8,8 +9,12 @@ import paperparcel.PaperParcelable
  */
 
 @PaperParcel
-data class BuiltDatesModel(val wkda: Wkda) : PaperParcelable {
+data class BuiltDatesModel(override val wkda: MutableMap<String, String>) : CarTypesModel, PaperParcelable {
     companion object {
         @JvmField val CREATOR = PaperParcelBuiltDatesModel.CREATOR
+    }
+
+    override fun isLastPage(): Boolean {
+        return !wkda.isEmpty()
     }
 }

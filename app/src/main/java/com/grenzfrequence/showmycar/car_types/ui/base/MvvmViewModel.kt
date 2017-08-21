@@ -8,7 +8,7 @@ import android.os.Parcelable
  * Created by grenzfrequence on 14.08.17.
  */
 
-interface MvvmViewModel<VIEW: MvvmView, MODEL: Parcelable> : Observable, MvvmViewModelData<MODEL> {
+interface MvvmViewModel<VIEW: MvvmView, MODEL: Parcelable> : Observable, MvvmViewModelItem<MODEL> {
 
     var view: VIEW?
 

@@ -5,13 +5,13 @@ import android.databinding.ViewDataBinding
 import android.support.annotation.IdRes
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.grenzfrequence.showmycar.car_types.ui.base.MvvmViewModelData
+import com.grenzfrequence.showmycar.car_types.ui.base.MvvmViewModelItem
 
 /**
  * Created by grenzfrequence on 06/03/17.
  */
 
-class BindingViewHolder<VIEWMODELDATA : MvvmViewModelData<*>>(
+class BindingViewHolder<VIEWMODELDATA : MvvmViewModelItem<*>>(
         itemView: View, viewModel: VIEWMODELDATA, @IdRes viewModelId: Int) : RecyclerView.ViewHolder(itemView) {
 
     lateinit var itemBinding: ViewDataBinding

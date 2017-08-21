@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import com.grenzfrequence.githubviewerkotlin.base.BaseActivity
 import com.grenzfrequence.showmycar.di.components.FragmentComponent
 import com.grenzfrequence.showmycar.utils.ComponentManager
+import org.greenrobot.eventbus.EventBus
 import javax.inject.Inject
 
 
@@ -33,12 +34,13 @@ abstract class BaseFragment
     override fun onStart() {
         super.onStart()
         viewModel.attachView(this)
+        EventBus.getDefault().register(this)
     }
 
     override fun onStop() {
         super.onStop()
         viewModel.detachView()
-
+        EventBus.getDefault().unregister(this)
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

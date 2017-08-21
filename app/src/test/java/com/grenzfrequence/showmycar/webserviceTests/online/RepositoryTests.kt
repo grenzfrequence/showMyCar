@@ -2,12 +2,12 @@ package com.grenzfrequence.showmycar.webserviceTests.online
 
 import com.grenzfrequence.showmycar.BuildConfig
 import com.grenzfrequence.showmycar.base.BaseUnitTest
-import com.grenzfrequence.showmycar.car_types.data.Repos.BuiltDatesRepository
-import com.grenzfrequence.showmycar.car_types.data.Repos.MainTypesRepository
-import com.grenzfrequence.showmycar.car_types.data.Repos.ManufacturersRepository
 import com.grenzfrequence.showmycar.car_types.data.model.BuiltDatesModel
 import com.grenzfrequence.showmycar.car_types.data.model.MainTypesModel
 import com.grenzfrequence.showmycar.car_types.data.model.ManufacturersModel
+import com.grenzfrequence.showmycar.car_types.data.repos.BuiltDatesRepository
+import com.grenzfrequence.showmycar.car_types.data.repos.MainTypesRepository
+import com.grenzfrequence.showmycar.car_types.data.repos.ManufacturersRepository
 import com.grenzfrequence.showmycar.webservice.ShowMyCarApi
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
@@ -69,7 +69,7 @@ class RepositoryTests : BaseUnitTest() {
 
         val builtDatesRepo = BuiltDatesRepository(showMyCarApi)
         builtDatesRepo.manufacturer = manufacturer
-        builtDatesRepo.maintype = mainType
+        builtDatesRepo.mainType = mainType
         val response: Response<BuiltDatesModel> = builtDatesRepo
                 .firstPage()
                 .blockingSingle()

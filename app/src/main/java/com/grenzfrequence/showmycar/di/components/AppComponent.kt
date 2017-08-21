@@ -5,7 +5,7 @@ import android.content.res.Resources
 import com.grenzfrequence.githubviewerkotlin.di.modules.NetModule
 import com.grenzfrequence.githubviewerkotlin.di.scopes.AppScope
 import com.grenzfrequence.githubviewerkotlin.utils.UrlReference
-import com.grenzfrequence.showmycar.common.ErrMessages
+import com.grenzfrequence.showmycar.common.ErrMsg
 import com.grenzfrequence.showmycar.di.modules.AppModule
 import com.grenzfrequence.showmycar.di.qualifiers.ErrorMessages
 import com.squareup.moshi.Moshi
@@ -35,6 +35,6 @@ interface AppComponent {
     fun baseUrlReference(): UrlReference
 
     @ErrorMessages
-    fun errorMessages(): ErrMessages
+    fun errorMessages(): Map<Int, ErrMsg>
 
 }

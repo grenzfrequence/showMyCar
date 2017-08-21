@@ -11,7 +11,7 @@ import com.grenzfrequence.showmycar.car_types.ui.base.MvvmViewModel
  * Created by grenzfrequence on 14.08.17.
  */
 
-abstract class BaseViewModel<VIEW : MvvmView, MODEL : Parcelable> : BaseObservable(), MvvmViewModel<VIEW, MODEL> {
+abstract class BaseViewModel<VIEW : MvvmView, MODEL: Parcelable> : BaseObservable(), MvvmViewModel<VIEW, MODEL> {
 
     companion object {
         val TAG_INSTANCE_STATE_BASE_VIEW_MODEL = BaseViewModel::class.java.simpleName

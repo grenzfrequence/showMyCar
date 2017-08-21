@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!--standard sizes to be used-->
+    <!--standard sizes-->
     <dimen name="tiny">2dp</dimen>
     <dimen name="small">4dp</dimen>
     <dimen name="medium">8dp</dimen>
@@ -12,15 +12,21 @@
     <dimen name="xxl">48dp</dimen>
     <dimen name="xxxl">96dp</dimen>
 
+    <!--special sizes for optical impression-->
+    <dimen name="medium_plus_frame">12dp</dimen>
+
     <!--text sizes-->
-    <dimen name="txt_medium">8sp</dimen>
-    <dimen name="txt_large">16sp</dimen>
+    <dimen name="txt_tiny">8sp</dimen>
+    <dimen name="txt_medium">16sp</dimen>
+    <dimen name="txt_large">24sp</dimen>
     <dimen name="txt_xl">32sp</dimen>
     <dimen name="txt_xxl">48sp</dimen>
     <dimen name="txt_xxxl">96sp</dimen>
 
-
     <dimen name="radius_medium">4dp</dimen>
     <dimen name="elevation_tiny">2dp</dimen>
     <dimen name="elevation_small">3dp</dimen>
+
+    <dimen name="dim_app_bar_layout">96</dimen>
+
 </resources>

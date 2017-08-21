@@ -1,4 +1,4 @@
-package com.grenzfrequence.showmycar.car_types.data.Repos
+package com.grenzfrequence.showmycar.car_types.data.repos
 
 import com.grenzfrequence.githubviewerkotlin.webservice.WebServiceConfig
 import com.grenzfrequence.showmycar.car_types.data.model.BuiltDatesModel
@@ -14,13 +14,13 @@ import kotlin.collections.Map.Entry
 
 class BuiltDatesRepository
 @Inject
-constructor(val showMyCarApi: ShowMyCarApi): Repository<BuiltDatesModel>() {
+constructor(private val showMyCarApi: ShowMyCarApi): Repository<BuiltDatesModel>() {
 
     lateinit var manufacturer: Entry<String, String>
-    lateinit var maintype: Entry<String, String>
+    lateinit var mainType: Entry<String, String>
 
     override fun nextPage(): Observable<Response<BuiltDatesModel>> {
         return showMyCarApi.getBuiltDates(
-                manufacturer.key, maintype.key, currentPageNr, WebServiceConfig.CARTYPES_PAGE_SIZE)
+                manufacturer.key, mainType.key, currentPageNr, WebServiceConfig.CARTYPES_PAGE_SIZE)
     }
 }

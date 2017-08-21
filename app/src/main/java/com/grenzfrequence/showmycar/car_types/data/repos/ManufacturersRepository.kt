@@ -1,4 +1,4 @@
-package com.grenzfrequence.showmycar.car_types.data.Repos
+package com.grenzfrequence.showmycar.car_types.data.repos
 
 import com.grenzfrequence.githubviewerkotlin.webservice.WebServiceConfig
 import com.grenzfrequence.showmycar.car_types.data.model.ManufacturersModel

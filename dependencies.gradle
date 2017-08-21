@@ -14,6 +14,8 @@ ext.versions = [
 
         paperParcel        : '2.0.2',
 
+        eventbus           : '3.0.0',
+
         RxJavaAndroid      : '2.0.1',
         RxJava             : '2.0.1',
 
@@ -61,6 +63,8 @@ ext.libraries = [
         paperParcel        : "nz.bradcampbell:paperparcel:$versions.paperParcel",
         paperParcelKotlin  : "nz.bradcampbell:paperparcel-kotlin:$versions.paperParcel",
         paperParcelCompiler: "nz.bradcampbell:paperparcel-compiler:$versions.paperParcel",
+
+        eventbus           : "org.greenrobot:eventbus:$versions.eventbus",
 
         RxJavaAndroid      : "io.reactivex.rxjava2:rxandroid:$versions.RxJavaAndroid",
         RxJava             : "io.reactivex.rxjava2:rxjava:$versions.RxJava",
